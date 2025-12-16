@@ -1,32 +1,16 @@
-const Checkbox = ({
-  id,
-  text,
-  className = '',
-  checkboxClassName = '',
-  labelClassName = '',
-  checked,
-  onChange,
-}) => {
+const Checkbox = ({ id, text, checked, onChange }) => {
   return (
-    <div className={`relative flex items-center ${className}`}>
-      <div className="flex items-center h-5">
-        <input
-          id={id}
-          type="checkbox"
-          className={`w-4 h-4 rounded cursor-pointer ${checkboxClassName}`}
-          checked={checked}
-          onChange={onChange}  // This will trigger onChange in parent when toggled
-        />
-      </div>
-
-      {text && (
-        <label
-          htmlFor={id}
-          className={`ml-3 text-md cursor-pointer font-medium ${labelClassName}`}
-        >
-          {text}
-        </label>
-      )}
+    <div className="flex items-center">
+      <input
+        id={id}
+        type="checkbox"
+        checked={checked}
+        onChange={onChange}
+        className="w-4 h-4 rounded cursor-pointer"
+      />
+      <label htmlFor={id} className="ml-3 text-md cursor-pointer font-medium">
+        {text}
+      </label>
     </div>
   );
 };

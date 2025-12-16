@@ -10,8 +10,8 @@ function CategoryFilter({ selectedCategories, onChangeCategory }) {
           key={index}
           id={`category-${index}`}
           text={category}
-          checked={selectedCategories.includes(category)} // controls checkbox state
-          onChange={(e) => onChangeCategory(category, e.target.checked)} // updates selected categories
+          checked={selectedCategories.includes(category)} 
+          onChange={(e) => onChangeCategory(category, e.target.checked)} 
         />
       ))}
     </div>
