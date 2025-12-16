@@ -2,7 +2,7 @@ const products = [
     {
         id: 1,
         name: "Chocolate Cake", 
-        categoryTitle: "Chocolate Cake",
+        categoryTitle: "Oreo Cake",
         image: "/images/cake1.jpg", 
         description: "Delicious chocolate cake with rich frosting",
         price: 2000,
@@ -25,7 +25,7 @@ const products = [
     },
     {
         id: 4,
-        name: "Oreo Cake",
+        name: "Birthday Cake",
         categoryTitle:"Birthday Cake",
         description: "Moist oreo cake with cream cheese frosting",
         image: "/images/cake4.webp",
@@ -34,7 +34,7 @@ const products = [
     {
         id: 5,
         name: "Strawberry Shortcake",
-        categoryTitle: "Chocolate Cake",
+        categoryTitle: "Oreo Cake",
         image: "/images/cake5.jpg",
         description: "Fresh strawberries on a light sponge cake with whipped cream",
         price: 2200,
@@ -129,8 +129,8 @@ const products = [
     },
     {
         id: 17,
-        name: "Banoffee Cake",
-        categoryTitle: "Banoffee Cake",
+        name: "Birthday Cake",
+        categoryTitle: "Birthday Cake",
         image: "/images/cake17.webp",
         description: "Banana and toffee cake with whipped cream and chocolate shavings",
         price: 2600,
