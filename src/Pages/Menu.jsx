@@ -8,7 +8,6 @@ function Menu() {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Memoize filtered products
   const filterProducts = useMemo(() => {
     console.log("Filtering products...");
     console.log("Selected Categories:", selectedCategories);
@@ -26,26 +25,26 @@ function Menu() {
     });
   }, [selectedCategories, searchTerm]);
 
-  // Category change handler
+
   const handleCategoryChange = (category, isChecked) => {
     setSelectedCategories((prevSelected) => {
       if (isChecked) {
-        return [...prevSelected, category]; // Add category
+        return [...prevSelected, category]; 
       } else {
-        return prevSelected.filter((item) => item !== category); // Remove category
+        return prevSelected.filter((item) => item !== category); 
       }
     });
   };
 
-  // Search change handler
+ 
   const handleSearchChange = (term) => {
-    setSearchTerm(term); // Update search term
+    setSearchTerm(term); 
   };
 
   return (
     <div className="menu-page flex flex-wrap px-4 py-8 space-x-4">
-      {/* Sidebar (Category Filter) */}
-      <div className="category-sidebar w-full lg:w-64 p-4 bg-gray-100 border-r border-gray-300 mb-4 lg:mb-0">
+
+      <div className="category-sidebar w-full lg:w-64 p-4 bg- border-gray-300 mb-4 lg:mb-0">
         <h2 className="text-2xl font-semibold mb-4">Categories</h2>
         <CategoryFilter 
           selectedCategories={selectedCategories} 
@@ -53,29 +52,29 @@ function Menu() {
         />
       </div>
 
-      {/* Main Content (Search Box and Product Grid) */}
+    
       <div className="main-content flex-1 p-4">
         <h1 className="text-4xl font-bold text-center mb-4">Our Menu</h1>
         <p className="text-lg text-center text-gray-600 mb-8">Explore our delicious selection of cakes and pastries.</p>
 
-        {/* Search Box */}
+     
         <SearchBox onSearchChange={handleSearchChange} className="w-full lg:w-auto mb-6" />
 
-        {/* Product Grid */}
+
         <div className="product-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-3">
           {filterProducts.map((product) => (
-            <div key={product.id} className="product-card bg-white border border-gray-200 rounded-lg shadow-md p-4">
+            <div key={product.id} className="product-card bg-white border-b  cursor-pointer  rounded-lg shadow-md p-4">
               <img
                 src={product.image || "/path/to/default-image.jpg"}
                 alt={product.name}
                 className="w-full h-48 object-cover rounded-md mb-4"
-                onError={(e) => (e.target.src = "/path/to/default-image.jpg")} // Fallback image
+                onError={(e) => (e.target.src = "/path/to/default-image.jpg")} 
               />
               <h2 className="product-name text-xl font-semibold text-gray-800 mb-2">{product.name}</h2>
               <p className="product-description text-gray-500 text-sm mb-2">{product.description}</p>
               <p className="product-price text-lg font-semibold text-gray-900">${product.price.toFixed(2)}</p>
               <Link to={`/product/${product.id}`} className="product-link mt-4 inline-block px-4 py-2 bg-blue-500 text-white rounded-md text-center hover:bg-blue-600">
-                View Details
+               Add to Cart
               </Link>
             </div>
           ))}
