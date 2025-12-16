@@ -1,24 +1,26 @@
-// In your products.js or wherever products is defined
 
 
  const products = [
     {
         id: 1,
         name: "Chocolate Cake", 
-        image: "/images/cake1.jpg", // Fixed path and extension
+        categoryTitle: "Chocolate Cake",
+        image: "/images/cake1.jpg", 
         description: "Delicious chocolate cake with rich frosting",
         price: 2000,
     },  
     {
         id: 2,
-        name: "Vanilla Cake",   
+        name: "Vanilla Cake", 
+        categoryTitle:  "Vanilla Cake",
         description: "Classic vanilla cake with creamy icing",
-        image: "/images/cake2.jpg", // Use different image names
+        image: "/images/cake2.jpg", 
         price: 1800,
     },
     {
         id: 3,  
-        name: "Red Velvet Cake",
+        name: " Ice Cake",
+        categoryTitle:  "Ice Cake",
         image: "/images/cake2.jpg",
         description: "Moist red velvet cake with cream cheese frosting",
         price: 2200,
@@ -26,6 +28,7 @@
     {
         id: 4,
         name: "Oreo Cake",
+        categoryTitle:"Oreo Cake",
         description: "Moist oreo cake with cream cheese frosting",
         image: "/images/cake2.jpg",
         price: 2500,

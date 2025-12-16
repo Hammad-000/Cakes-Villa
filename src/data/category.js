@@ -1,32 +1,24 @@
-
 export const categories = [
   {
     id: 1,
-    title: "Chocolate Cake",
+    categoryTitle: "Chocolate Cake",
     image: "",
   },
   {
     id: 2,
-    title: "Vanilla Cake",
+    categoryTitle: "Vanilla Cake",
     image: "",
   },
   {
     id: 3,
-    title: "Birthday Cake",
+    categoryTitle: "Birthday Cake",
     image: "",
   },
   {
     id: 4,
-    title: "Oreo Cake",
+    categoryTitle: "Oreo Cake",
     image: "",
   },
- 
-  
-
-
-
-
 ];
 
-
-export const categoryTitle = categories.map((category) => category.title);
+export const categoryTitle = categories.map((category) => category.categoryTitle);

@@ -1,4 +1,4 @@
-import Checkbox from "../components/Cheakbox";
+import Checkbox from "./Checkbox";
 import { categoryTitle } from "../data/category";
 
 function CategoryFilter({ selectedCategories, onChangeCategory }) {
@@ -8,9 +8,10 @@ function CategoryFilter({ selectedCategories, onChangeCategory }) {
       {categoryTitle.map((category, index) => (
         <Checkbox
           key={index}
+          id={`category-${index}`}
           text={category}
-          checked={selectedCategories.includes(category)}
-          onChange={(e) => onChangeCategory(category, e.target.checked)}
+          checked={selectedCategories.includes(category)} // controls checkbox state
+          onChange={(e) => onChangeCategory(category, e.target.checked)} // updates selected categories
         />
       ))}
     </div>

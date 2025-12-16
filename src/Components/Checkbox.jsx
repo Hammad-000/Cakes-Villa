@@ -1,20 +1,34 @@
-import Checkbox from "../components/Cheakbox";
-import { categoryTitle } from "../data/category";
-
-function CategoryFilter({ selectedCategories, onChangeCategory }) {
+const Checkbox = ({
+  id,
+  text,
+  className = '',
+  checkboxClassName = '',
+  labelClassName = '',
+  checked,
+  onChange,
+}) => {
   return (
-    <div className="h-65 mt-2 p-4 space-y-2 border border-gray-200 shadow-lg rounded-md">
-      <h3 className="font-semibold text-lg">Category Filter</h3>
-      {categoryTitle.map((category, index) => (
-        <Checkbox
-          key={index}
-          text={category}
-          checked={selectedCategories.includes(category)}
-          onChange={(e) => onChangeCategory(category, e.target.checked)}
+    <div className={`relative flex items-center ${className}`}>
+      <div className="flex items-center h-5">
+        <input
+          id={id}
+          type="checkbox"
+          className={`w-4 h-4 rounded cursor-pointer ${checkboxClassName}`}
+          checked={checked}
+          onChange={onChange}  // This will trigger onChange in parent when toggled
         />
-      ))}
+      </div>
+
+      {text && (
+        <label
+          htmlFor={id}
+          className={`ml-3 text-md cursor-pointer font-medium ${labelClassName}`}
+        >
+          {text}
+        </label>
+      )}
     </div>
   );
-}
+};
 
-export default CategoryFilter;
+export default Checkbox;
