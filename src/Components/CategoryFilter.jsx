@@ -1,6 +1,7 @@
 import Checkbox from "./Checkbox";
 import { categoryTitle } from "../data/category";
 
+
 function CategoryFilter({ selectedCategories, onChangeCategory }) {
   return (
     <div className="h-65 mt-2 p-4 space-y-2 border border-gray-200 shadow-lg rounded-md">
