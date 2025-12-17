@@ -11,7 +11,7 @@ function Menu() {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   
-  // Initialize price range state
+
   const initPriceRange = {
     min: Math.min(...products.map(product => product.price)),
     max: Math.max(...products.map(product => product.price)),
@@ -20,7 +20,7 @@ function Menu() {
 
   const [priceRange, setPriceRange] = useState(initPriceRange);
 
-  // Filter products based on selected categories, search term, and price range
+
   const filterProducts = useMemo(() => {
     return products.filter((product) => {
       const matchesCategory =
@@ -37,7 +37,7 @@ function Menu() {
     });
   }, [selectedCategories, searchTerm, priceRange]);
 
-  // Handle category change
+
   const handleCategoryChange = (category, isChecked) => {
     setSelectedCategories((prevSelected) => {
       if (isChecked) {
@@ -48,7 +48,6 @@ function Menu() {
     });
   };
 
-  // Handle search term change
   const handleSearchChange = (term) => {
     setSearchTerm(term);
   };
@@ -61,7 +60,7 @@ function Menu() {
           selectedCategories={selectedCategories}
           onChangeCategory={handleCategoryChange}
         />
-        {/* Pass priceRange state and setter to PriceRange component */}
+    
         <PriceRange 
           priceRange={priceRange} 
           initPriceRange={initPriceRange} 
@@ -74,6 +73,7 @@ function Menu() {
         <p className="text-lg text-center text-gray-600 mb-8">Explore our delicious selection of cakes and pastries.</p>
         <SearchBox onSearchChange={handleSearchChange} className="w-full lg:w-auto mb-6" />
         <ProductsCart filteredProducts={filterProducts} />
+        
       </div>
     </div>
   );

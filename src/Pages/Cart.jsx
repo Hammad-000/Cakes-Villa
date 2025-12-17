@@ -1,91 +1,136 @@
-import React, { createContext, useState, useContext, useEffect } from "react";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useCart } from '../components/CartContext';
+import { FaTrash, FaPlus, FaMinus, FaArrowLeft } from 'react-icons/fa';
 
-// Creating the Cart Context
-const CartContext = createContext();
+function Cart() {
+  const { 
+    cart, 
+    removeFromCart, 
+    incrementQuantity, 
+    decrementQuantity, 
+    calculateTotalPrice,
+    clearCart 
+  } = useCart();
 
-export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState(() => {
-    const storedCart = localStorage.getItem("cart");
-    // Parse the cart, or set to empty array if invalid data is found
-    try {
-      return storedCart ? JSON.parse(storedCart) : [];
-    } catch (error) {
-      console.error("Failed to parse cart data from localStorage", error);
-      return [];
-    }
-  });
-
-  // Sync cart with localStorage
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
-
-  // Add product to cart or increment quantity
-  const addToCart = (product) => {
-    setCart((prevCart) => {
-      const existingProduct = prevCart.find((item) => item.id === product.id);
-      
-      // If product already in cart, increment quantity
-      if (existingProduct) {
-        return prevCart.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
-      }
-
-      // If new product, add to cart with quantity 1
-      return [...prevCart, { ...product, quantity: 1 }];
-    });
-  };
-
-  // Remove product from cart
-  const removeFromCart = (productId) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
-  };
-
-  // Increment product quantity
-  const incrementQuantity = (productId) => {
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
-      )
+  if (cart.length === 0) {
+    return (
+      <div className="container mx-auto px-4 py-16 text-center">
+        <h1 className="text-3xl font-bold mb-4">Your Cart is Empty</h1>
+        <p className="text-gray-600 mb-8">Add some delicious items from our menu!</p>
+        <Link 
+          to="/menu" 
+          className="inline-flex items-center gap-2 bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors"
+        >
+          <FaArrowLeft />
+          Continue Shopping
+        </Link>
+      </div>
     );
-  };
+  }
 
-  // Decrement product quantity (only if > 1)
-  const decrementQuantity = (productId) => {
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.id === productId && item.quantity > 1
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
-      )
-    );
-  };
-
-  // Calculate the total price of all items in the cart
-  const calculateTotalPrice = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
-  };
-
-  // Returning the Cart context
   return (
-    <CartContext.Provider
-      value={{
-        cart,
-        addToCart,
-        removeFromCart,
-        incrementQuantity,
-        decrementQuantity,
-        calculateTotalPrice,
-      }}
-    >
-      {children}
-    </CartContext.Provider>
+    <div className="container mx-auto px-4 py-8 max-w-6xl">
+      <h1 className="text-3xl font-bold mb-8">Your Shopping Cart</h1>
+      
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Cart Items */}
+        <div className="lg:col-span-2 space-y-4">
+          {cart.map((item) => (
+            <div key={item.id} className="flex flex-col sm:flex-row items-center justify-between bg-white p-4 rounded-lg shadow-md border">
+              <div className="flex items-center space-x-4 mb-4 sm:mb-0">
+                <img 
+                  src={item.image} 
+                  alt={item.name} 
+                  className="w-24 h-24 object-cover rounded-lg"
+                />
+                <div>
+                  <h3 className="font-semibold text-lg">{item.name}</h3>
+                  <p className="text-gray-600">${item.price.toFixed(2)}</p>
+                  <p className="text-sm text-gray-500">Category: {item.categoryTitle}</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-2">
+                  <button 
+                    onClick={() => decrementQuantity(item.id)}
+                    className="bg-gray-200 w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-300"
+                  >
+                    <FaMinus className="text-sm" />
+                  </button>
+                  <span className="font-semibold w-8 text-center">{item.quantity}</span>
+                  <button 
+                    onClick={() => incrementQuantity(item.id)}
+                    className="bg-gray-200 w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-300"
+                  >
+                    <FaPlus className="text-sm" />
+                  </button>
+                </div>
+                
+                <p className="font-semibold text-lg w-20 text-right">
+                  ${(item.price * item.quantity).toFixed(2)}
+                </p>
+                
+                <button 
+                  onClick={() => removeFromCart(item.id)}
+                  className="text-red-500 hover:text-red-700 p-2"
+                  title="Remove item"
+                >
+                  <FaTrash />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {/* Order Summary */}
+        <div className="lg:col-span-1">
+          <div className="bg-gray-50 p-6 rounded-lg shadow-md sticky top-4">
+            <h2 className="text-2xl font-bold mb-6">Order Summary</h2>
+            
+            <div className="space-y-4 mb-6">
+              <div className="flex justify-between">
+                <span>Subtotal ({cart.reduce((total, item) => total + item.quantity, 0)} items)</span>
+                <span>${calculateTotalPrice().toFixed(2)}</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Shipping</span>
+                <span className="text-green-600">Free</span>
+              </div>
+              <div className="border-t pt-4">
+                <div className="flex justify-between text-xl font-bold">
+                  <span>Total</span>
+                  <span>${calculateTotalPrice().toFixed(2)}</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="space-y-4">
+              <button className="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 font-semibold transition-colors">
+                Proceed to Checkout
+              </button>
+              
+              <button 
+                onClick={clearCart}
+                className="w-full border border-red-500 text-red-500 py-3 rounded-lg hover:bg-red-50 font-semibold transition-colors flex items-center justify-center gap-2"
+              >
+                <FaTrash />
+                Clear Cart
+              </button>
+              
+              <Link 
+                to="/menu"
+                className="block text-center text-blue-500 hover:text-blue-700 hover:underline py-2"
+              >
+                Continue Shopping
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
-};
+}
 
-
-export const useCart = () => useContext(CartContext);
-export default CartProvider
+export default Cart;
