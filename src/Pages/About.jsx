@@ -1,13 +1,31 @@
-
+import * as motion from "motion/react-client"
+import { html } from "motion/react-m";
 
 
 
 function About() {
   return (
     <div className="about-page">
-      <h1>About Us</h1>
-      <p>Welcome to our cake website! We are passionate about baking and sharing delicious cakes with the world.</p>
+       <motion.div
+            style={box}
+             
+            animate={{ rotate: 260 }}
+            transition={{ duration: 2 }}
+        />
+    
     </div>
+
   );
 }       
+
+
+const box = {
+    width: 100,
+    height: 100,
+    backgroundColor: "#ff0088",
+    borderRadius: 5,
+    
+    
+    
+}
 export default About;

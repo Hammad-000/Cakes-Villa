@@ -5,6 +5,7 @@ import CategoryFilter from "../Components/CategoryFilter";
 import SearchBox from "../Components/SearchBox";
 import ProductsCart from "../Components/ProductsCart";
 import PriceRange from "../Components/PriceRange";
+import ProductDetailpg from "./ProductDetailpg";
 
 function Menu() {
   const [selectedCategories, setSelectedCategories] = useState([]);

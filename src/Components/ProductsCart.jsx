@@ -1,22 +1,35 @@
 import { Link } from "react-router-dom";
+import { useCart } from "../components/CartContext";
 
 function ProductsCart({ filteredProducts }) {
+  const { addToCart } = useCart();
+
   return (
-    <div className="product-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-3">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {filteredProducts.map((product) => (
-        <div key={product.id} className="product-card bg-white border-b cursor-pointer rounded-lg shadow-md p-4">
-          <img
-            src={product.image || "/path/to/default-image.jpg"}
-            alt={product.name}
-            className="w-full h-48 object-cover rounded-md mb-4"
-            onError={(e) => (e.target.src = "/path/to/default-image.jpg")} 
-          />
-          <h2 className="product-name text-xl font-semibold text-gray-800 mb-2">{product.name}</h2>
-          <p className="product-description text-gray-500 text-sm mb-2">{product.description}</p>
-          <p className="product-price text-lg font-semibold text-gray-900">${product.price.toFixed(2)}</p>
-          <Link to={`/product/${product.id}`} className="product-link mt-4 inline-block px-4 py-2 bg-blue-500 text-white rounded-md text-center hover:bg-blue-600">
-            Add to Cart
+        <div key={product.id} className="bg-white shadow rounded-lg p-4">
+          
+          {/* Navigate to product detail */}
+          <Link to={`/product/${product.id}`}>
+            <img
+              src={product.image}
+              alt={product.name}
+              className="w-full h-48 object-cover rounded"
+            />
+            <h3 className="text-lg font-semibold mt-2">
+              {product.name}
+            </h3>
           </Link>
+
+          <p className="text-gray-600">${product.price.toFixed(2)}</p>
+
+          {/* Add to cart */}
+          <button
+            onClick={() => addToCart(product)}
+            className="mt-3 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+          >
+            Add to Cart
+          </button>
         </div>
       ))}
     </div>
@@ -24,7 +37,3 @@ function ProductsCart({ filteredProducts }) {
 }
 
 export default ProductsCart;
-
-
-
-
