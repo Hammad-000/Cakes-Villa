@@ -10,8 +10,9 @@ import Cart from './Pages/Cart';
 import ProductDetailpg from "./Pages/ProductDetailpg";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { CartProvider, useCart } from './components/CartContext';
-import { FaBars, FaTimes } from 'react-icons/fa'; // For mobile menu
+import { FaBars, FaTimes } from 'react-icons/fa'; 
 import { GiCakeSlice } from "react-icons/gi";
+import FooterContent from './components/FooterContent';
 
 
 function CartIcon() {
@@ -208,6 +209,8 @@ function App() {
               )}
             </div>
           </nav>
+         
+        
 
           {/* Main Content */}
           <main className="container mx-auto px-4">
@@ -221,18 +224,12 @@ function App() {
               <Route path="/" element={<Navigate to="/home" />} />
               <Route path="*" element={<Error />} />
             </Routes>
+          <FooterContent />
           </main>
 
-          {/* Add animation styles */}
-          <style jsx>{`
-            @keyframes fadeIn {
-              from { opacity: 0; transform: translateY(-10px); }
-              to { opacity: 1; transform: translateY(0); }
-            }
-            .animate-fadeIn {
-              animation: fadeIn 0.3s ease-out;
-            }
-          `}</style>
+         
+   
+
         </div>
       </Router>
     </CartProvider>

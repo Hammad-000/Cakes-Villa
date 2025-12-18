@@ -10,7 +10,7 @@ function ProductDetailpg() {
 
   const product = products.find((p) => p.id === Number(id));
   
-  // Find the product in the cart to get its current quantity
+
   const cartItem = cart.find(item => item.id === Number(id));
   const currentQuantity = cartItem ? cartItem.quantity : 0;
 
@@ -21,7 +21,7 @@ function ProductDetailpg() {
   return (
     <div className="container mx-auto px-4 py-10 max-w-6xl">
       <div className="grid md:grid-cols-2 gap-12">
-        {/* Product Image */}
+   
         <div className="flex justify-center items-center">
           <img
             src={product.image}
@@ -30,7 +30,7 @@ function ProductDetailpg() {
           />
         </div>
 
-        {/* Product Details */}
+  
         <div className="flex flex-col justify-center">
           <div className="mb-6">
             <span className="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full mb-4">
@@ -49,15 +49,15 @@ function ProductDetailpg() {
             </div>
           </div>
 
-          {/* Quantity Controls */}
+        
           <div className="mb-10">
             <h3 className="text-lg font-semibold mb-4 text-gray-700">Quantity</h3>
             
             {currentQuantity === 0 ? (
-              // Add to Cart Button (when not in cart)
+     
               <button
                 onClick={() => addToCart(product)}
-                className="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl active:scale-95"
+                className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 gap-3 p-3 to-orange-400 text-white shadow-md w-full"
               >
                 <FaShoppingCart className="text-xl" />
                 <span className="text-lg">Add to Cart</span>
@@ -107,7 +107,7 @@ function ProductDetailpg() {
             )}
           </div>
 
-          {/* Product Details / Features */}
+    
           <div className="bg-gray-50 rounded-2xl p-6 mb-8">
             <h3 className="text-xl font-bold mb-4 text-gray-800">Product Details</h3>
             <ul className="space-y-3">
@@ -130,7 +130,7 @@ function ProductDetailpg() {
             </ul>
           </div>
 
-          {/* Stock Status */}
+ 
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
@@ -144,7 +144,7 @@ function ProductDetailpg() {
         </div>
       </div>
 
-      {/* You might also like section */}
+  
       <div className="mt-16 pt-8 border-t border-gray-200">
         <h2 className="text-2xl font-bold mb-6 text-gray-800">You Might Also Like</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">

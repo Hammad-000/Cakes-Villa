@@ -1,17 +1,15 @@
 import { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
 import products from "../data/products";
 import CategoryFilter from "../Components/CategoryFilter";
 import SearchBox from "../Components/SearchBox";
 import ProductsCart from "../Components/ProductsCart";
 import PriceRange from "../Components/PriceRange";
-import ProductDetailpg from "./ProductDetailpg";
+import FooterContent from "../components/FooterContent";
 
 function Menu() {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   
-
   const initPriceRange = {
     min: Math.min(...products.map(product => product.price)),
     max: Math.max(...products.map(product => product.price)),
@@ -19,7 +17,6 @@ function Menu() {
   };
 
   const [priceRange, setPriceRange] = useState(initPriceRange);
-
 
   const filterProducts = useMemo(() => {
     return products.filter((product) => {
@@ -37,7 +34,6 @@ function Menu() {
     });
   }, [selectedCategories, searchTerm, priceRange]);
 
-
   const handleCategoryChange = (category, isChecked) => {
     setSelectedCategories((prevSelected) => {
       if (isChecked) {
@@ -53,28 +49,77 @@ function Menu() {
   };
 
   return (
-    <div className="menu-page flex flex-wrap px-4 py-8 space-x-4">
-      <div className="category-sidebar w-full lg:w-64 p-4 bg-border-gray-300 mb-4 lg:mb-0">
-        <h2 className="text-2xl font-semibold mb-4">Categories</h2>
-        <CategoryFilter
-          selectedCategories={selectedCategories}
-          onChangeCategory={handleCategoryChange}
-        />
-    
-        <PriceRange 
-          priceRange={priceRange} 
-          initPriceRange={initPriceRange} 
-          setPriceRange={setPriceRange} 
-        />
+    <div className="min-h-screen flex flex-col">
+      {/* Main Content Area */}
+      <div className="flex-1">
+        <div className="max-w-9xl mx-auto px-4 py-8 space-x-6">
+          <div className="flex flex-col lg:flex-row gap-6">
+            {/* Sidebar */}
+            <div className="w-full lg:w-72 xl:w-80">
+              <div className="bg-gradient-to-b from-gray-50 to-gray-100 rounded-xl shadow-sm p-6 border border-gray-200 sticky top-6">
+                <h2 className="text-2xl font-bold mb-6 text-gray-800">Filters</h2>
+                
+                {/* Categories Section */}
+                <div className="mb-8">
+                  <h3 className="text-lg font-semibold mb-4 text-gray-700">Categories</h3>
+                  <CategoryFilter
+                    selectedCategories={selectedCategories}
+                    onChangeCategory={handleCategoryChange}
+                  />
+                </div>
+                
+                {/* Price Range Section */}
+                <div className="pt-6 border-t border-gray-300">
+                  <h3 className="text-lg font-semibold mb-4 text-gray-700">Price Range</h3>
+                  <PriceRange 
+                    priceRange={priceRange} 
+                    initPriceRange={initPriceRange} 
+                    setPriceRange={setPriceRange} 
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Main Content */}
+            <div className="flex-1">
+              <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                {/* Header */}
+                <div className="text-center mb-8">
+                  <h1 className="text-5xl md:text-6xl font-bold mb-4">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400">
+                      Our Menu
+                    </span>
+                  </h1>
+                  <p className="text-lg text-gray-600 mb-6 max-w-3xl mx-auto">
+                    Explore our delicious selection of cakes and pastries. Handcrafted with love and the finest ingredients.
+                  </p>
+                  
+                  {/* Search Box */}
+                  <div className="max-w-2xl mx-auto mb-8">
+                    <SearchBox 
+                      onSearchChange={handleSearchChange} 
+                      className="w-full" 
+                    />
+                  </div>
+                </div>
+
+                {/* Products Count */}
+                <div className="mb-6">
+                  <p className="text-gray-700">
+                    Showing <span className="font-bold text-orange-500">{filterProducts.length}</span> of{" "}
+                    <span className="font-bold">{products.length}</span> products
+                  </p>
+                </div>
+
+                {/* Products Grid */}
+                <ProductsCart filteredProducts={filterProducts} />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="main-content flex-1 p-4">
-        <h1 className="text-4xl font-bold text-center mb-4">Our Menu</h1>
-        <p className="text-lg text-center text-gray-600 mb-8">Explore our delicious selection of cakes and pastries.</p>
-        <SearchBox onSearchChange={handleSearchChange} className="w-full lg:w-auto mb-6" />
-        <ProductsCart filteredProducts={filterProducts} />
-        
-      </div>
+    
     </div>
   );
 }
