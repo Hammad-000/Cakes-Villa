@@ -34,7 +34,7 @@ function Cart() {
       <h1 className="text-3xl font-bold mb-8">Your Shopping Cart</h1>
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Cart Items */}
+
         <div className="lg:col-span-2 space-y-4">
           {cart.map((item) => (
             <div key={item.id} className="flex flex-col sm:flex-row items-center justify-between bg-white p-4 rounded-lg shadow-md border">
@@ -84,7 +84,7 @@ function Cart() {
           ))}
         </div>
         
-        {/* Order Summary */}
+
         <div className="lg:col-span-1">
           <div className="bg-gray-50 p-6 rounded-lg shadow-md sticky top-4">
             <h2 className="text-2xl font-bold mb-6">Order Summary</h2>

@@ -7,7 +7,7 @@ function ProductsCart({ filteredProducts }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {filteredProducts.map((product) => (
-        <div key={product.id} className="bg-white shadow rounded-lg p-4">
+        <div key={product.id} className="bg-white shadow  rounded-lg p-5 min-w-3/5">
           
           {/* Navigate to product detail */}
           <Link to={`/product/${product.id}`}>
