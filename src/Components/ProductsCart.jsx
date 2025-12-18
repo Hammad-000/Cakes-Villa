@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../components/CartContext";
+import { GiCakeSlice } from "react-icons/gi";
+
 
 function ProductsCart({ filteredProducts }) {
   const { addToCart } = useCart();
@@ -14,7 +16,7 @@ function ProductsCart({ filteredProducts }) {
             <img
               src={product.image}
               alt={product.name}
-              className="w-full h-48 object-cover rounded"
+              className="w-full h-48 object-cover "
             />
             <h3 className="text-lg font-semibold mt-2">
               {product.name}
@@ -26,9 +28,10 @@ function ProductsCart({ filteredProducts }) {
           {/* Add to cart */}
           <button
             onClick={() => addToCart(product)}
-            className="mt-3 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+            className=" bg-gradient-to-r from-pink-500 to-orange-400 gap-2 text-white px-5 py-3 rounded font-semibold text-lg hover:shadow-xl  w-full hover:shadow-pink-200 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center"
           >
-            Add to Cart
+           Order Now  <GiCakeSlice />
+
           </button>
         </div>
       ))}

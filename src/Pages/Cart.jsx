@@ -107,7 +107,7 @@ function Cart() {
             </div>
             
             <div className="space-y-4">
-              <button className="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 font-semibold transition-colors">
+              <button className="w-full bg-gradient-to-r rounded p-3 from-pink-500 to-orange-400 text-white shadow-md">
                 Proceed to Checkout
               </button>
               
