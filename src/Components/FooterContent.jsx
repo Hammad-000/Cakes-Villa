@@ -36,11 +36,11 @@ const FooterContent = () => {
                             </div>
                             <div className="flex flex-col items-center space-y-1 hover:text-gray-300 transition-colors cursor-pointer">
                                 <FaInstagram className="w-8 h-8 text-pink-500" />
-                                <span className="text-sm">Instagram</span>
+                              <a href="https://www.instagram.com/cakes_villa002" className="text-sm"> Instagram </a>
                             </div>
                             <div className="flex flex-col items-center space-y-1 hover:text-gray-300 transition-colors cursor-pointer">
                                 <FaXTwitter className="w-8 h-8 text-gray-300" />
-                                <span className="text-sm">Twitter</span>
+                                <span  className="text-sm">Twitter</span>
                             </div>
                             <div className="flex flex-col items-center space-y-1 hover:text-gray-300 transition-colors cursor-pointer">
                                 <ImWhatsapp className="w-8 h-8 text-green-500" />

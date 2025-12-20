@@ -5,10 +5,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [
     react(),
-    tailwindcss({
-      content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-    }),
-  ],
+    tailwindcss()],
+    base:process.env.VITE_BASE_PATH ||"Cakes-Villa"
 
-}
-)
+});

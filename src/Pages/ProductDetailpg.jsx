@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import products from "../data/products";
-import { useCart } from "./components/CartContext";
+import { useCart } from "../components/CartContext";
 import { FaPlus, FaMinus, FaShoppingCart } from "react-icons/fa";
 
 function ProductDetailpg() {
