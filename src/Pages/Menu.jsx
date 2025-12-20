@@ -1,10 +1,10 @@
 import { useState, useMemo } from "react";
 import products from "../data/products";
-import CategoryFilter from "../Components/CategoryFilter";
-import SearchBox from "../Components/SearchBox";
-import ProductsCart from "../Components/ProductsCart";
-import PriceRange from "../Components/PriceRange";
-import FooterContent from "../components/FooterContent";
+import CategoryFilter from "../components/CategoryFilter";
+import SearchBox from "../components/SearchBox";
+import ProductsCart from "../components/ProductsCart";
+import PriceRange from "../components/PriceRange";
+
 
 function Menu() {
   const [selectedCategories, setSelectedCategories] = useState([]);
