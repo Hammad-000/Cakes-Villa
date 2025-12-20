@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, NavLink, Navigate, Link } from 'react-router-dom';
 import About from './Pages/About';
 import Menu from './Pages/Menu';
 import Contact from './Pages/Contact';
@@ -13,6 +12,7 @@ import { CartProvider, useCart } from './components/CartContext';
 import { FaBars, FaTimes } from 'react-icons/fa'; 
 import { GiCakeSlice } from "react-icons/gi";
 import FooterContent from './components/FooterContent';
+import { Route, Routes, NavLink, Navigate, Link } from 'react-router-dom';
 
 
 
@@ -46,7 +46,9 @@ function App() {
 
   return (
     <CartProvider>
-      <Router>
+
+ 
+     
         <div className="min-h-screen bg-gradient-to-br from-rose-50 to-orange-50">
           {/* Navigation */}
           <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm">
@@ -120,7 +122,7 @@ function App() {
                   </NavLink>
                 </div>
 
-                {/* Right Side Buttons */}
+            
                <div className="flex items-center space-x-4">
   <Link 
     to="/menu" 
@@ -132,7 +134,7 @@ function App() {
   
   <CartIcon />
   
-  {/* Mobile Menu Button */}
+
   <button 
     className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
     onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -142,7 +144,7 @@ function App() {
 </div>
               </div>
 
-              {/* Mobile Menu */}
+
               {isMenuOpen && (
                 <div className="md:hidden mt-4 py-4 border-t border-gray-200 animate-fadeIn">
                   <div className="flex flex-col space-y-3">
@@ -228,11 +230,7 @@ function App() {
           <FooterContent />
           </div>
 
-         
-   
-
         </div>
-      </Router>
     </CartProvider>
   );
 }
