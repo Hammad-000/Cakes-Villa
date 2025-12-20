@@ -103,7 +103,7 @@ function Menu() {
                   </div>
                 </div>
 
-                {/* Products Count */}
+         
                 <div className="mb-6">
                   <p className="text-gray-700">
                     Showing <span className="font-bold text-orange-500">{filterProducts.length}</span> of{" "}
@@ -111,7 +111,7 @@ function Menu() {
                   </p>
                 </div>
 
-                {/* Products Grid */}
+    
                 <ProductsCart filteredProducts={filterProducts} />
               </div>
             </div>

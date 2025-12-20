@@ -15,6 +15,7 @@ import { GiCakeSlice } from "react-icons/gi";
 import FooterContent from './components/FooterContent';
 
 
+
 function CartIcon() {
   const { cart } = useCart();
   const cartItemsCount = cart.reduce((total, item) => total + item.quantity, 0);
@@ -212,8 +213,8 @@ function App() {
          
         
 
-          {/* Main Content */}
-          <main className="container mx-auto px-4">
+
+          <div className="container mx-auto px-4">
             <Routes>
               <Route path="/home" element={<Home />} />
               <Route path="/menu" element={<Menu />} />
@@ -225,7 +226,7 @@ function App() {
               <Route path="*" element={<Error />} />
             </Routes>
           <FooterContent />
-          </main>
+          </div>
 
          
    
