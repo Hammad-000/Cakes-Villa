@@ -20,10 +20,10 @@ function Cart() {
         <p className="text-gray-600 mb-8">Add some delicious items from our menu!</p>
         <Link 
           to="/menu" 
-          className="inline-flex items-center gap-2 bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors"
+          className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 gap-3 p-3 to-orange-400 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors"
         >
           <FaArrowLeft />
-          Continue Shopping
+          Checkout Menu
         </Link>
       </div>
     );

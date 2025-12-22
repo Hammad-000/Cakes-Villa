@@ -28,7 +28,7 @@ function ProductsCart({ filteredProducts }) {
           {/* Add to cart */}
           <button
             onClick={() => addToCart(product)}
-            className=" bg-gradient-to-r from-pink-500 to-orange-400 gap-2 text-white px-5 py-3 rounded font-semibold text-lg hover:shadow-xl  w-full hover:shadow-pink-200 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center"
+            className=" bg-gradient-to-r from-pink-500 to-orange-400 gap-2 cursor-pointer text-white px-5 py-3 rounded font-semibold text-lg hover:shadow-xl  w-full hover:shadow-pink-200 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center"
           >
            Order Now  <GiCakeSlice />
 

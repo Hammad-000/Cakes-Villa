@@ -76,17 +76,7 @@ function Home() {
               <div className="absolute -bottom-6 -right-6 w-40 h-40 bg-pink-200 rounded-full opacity-20 animate-pulse delay-300"></div>
               
 
-              <div className="absolute -right-4 top-1/4 bg-white p-4 rounded-2xl shadow-xl transform -translate-y-1/2">
-                <div className="flex items-center space-x-3">
-                  <div className="bg-green-100 p-3 rounded-full">
-                    <FaClock className="text-green-600 text-xl" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-gray-800">Fresh Daily</div>
-                    <div className="text-sm text-gray-600">Made with love</div>
-                  </div>
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>
