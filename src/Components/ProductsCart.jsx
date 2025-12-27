@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useCart } from "../components/CartContext";
+import { useCart } from "./CartContext";
 import { GiCakeSlice } from "react-icons/gi";
 
 
@@ -16,7 +16,7 @@ function ProductsCart({ filteredProducts }) {
             <img
               src={product.image}
               alt={product.name}
-              className="w-full h-48 object-cover "
+              className="w-full h-48 object-cover rounded "
             />
             <h3 className="text-lg font-semibold mt-2">
               {product.name}

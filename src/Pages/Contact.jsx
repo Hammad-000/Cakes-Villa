@@ -170,15 +170,15 @@ function Contact() {
                 <div className="space-y-4">
                   <div className="flex justify-between items-center pb-3 border-b border-white/20">
                     <span className="font-medium">Monday - Friday</span>
-                    <span className="font-semibold">8:00 AM - 8:00 PM</span>
+                    <span className="font-semibold">10:00 AM - 10:00 PM</span>
                   </div>
                   <div className="flex justify-between items-center pb-3 border-b border-white/20">
                     <span className="font-medium">Saturday</span>
-                    <span className="font-semibold">9:00 AM - 6:00 PM</span>
+                    <span className="font-semibold">10:00 AM - 12:00 PM</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="font-medium">Sunday</span>
-                    <span className="font-semibold">9:00 AM - 6:00 PM</span>
+                    <span className="font-semibold">4:00 PM - 11:00 PM</span>
                   </div>
                 </div>
                 <div className="mt-6 pt-6 border-t border-white/20">
