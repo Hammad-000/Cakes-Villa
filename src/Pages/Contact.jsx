@@ -178,7 +178,7 @@ function Contact() {
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="font-medium">Sunday</span>
-                    <span className="font-semibold">4:00 PM - 11:00 PM</span>
+                    <span className="font-semibold">3:00 PM - 11:00 PM</span>
                   </div>
                 </div>
                 <div className="mt-6 pt-6 border-t border-white/20">
