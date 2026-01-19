@@ -34,7 +34,6 @@ function Cart() {
 
   const handleSubmitOrder = (e) => {
     e.preventDefault();
-    // Here you would typically send the order to your backend
     console.log('Order submitted:', { 
       customerDetails, 
       cartItems: cart, 

@@ -14,13 +14,23 @@ export const CartProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
+    if (cart.length === 0) {
+      localStorage.removeItem("cart"); 
+    } else {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
   }, [cart]);
 
+ 
   const addToCart = (product) => {
+    if (!product || !product.id || !product.price) {
+      console.error("Invalid product", product);
+      return;
+    }
+
     setCart((prevCart) => {
       const existingProduct = prevCart.find((item) => item.id === product.id);
-      
+
       if (existingProduct) {
         return prevCart.map((item) =>
           item.id === product.id
@@ -32,9 +42,11 @@ export const CartProvider = ({ children }) => {
     });
   };
 
+
   const removeFromCart = (productId) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
   };
+
 
   const incrementQuantity = (productId) => {
     setCart((prevCart) =>
@@ -43,6 +55,7 @@ export const CartProvider = ({ children }) => {
       )
     );
   };
+
 
   const decrementQuantity = (productId) => {
     setCart((prevCart) =>
@@ -54,13 +67,16 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+
   const calculateTotalPrice = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
+
   const clearCart = () => {
     setCart([]);
   };
+
 
   const getTotalItems = () => {
     return cart.reduce((total, item) => total + item.quantity, 0);
@@ -84,6 +100,7 @@ export const CartProvider = ({ children }) => {
   );
 };
 
+
 export const useCart = () => {
   const context = useContext(CartContext);
   if (!context) {
@@ -92,4 +109,4 @@ export const useCart = () => {
   return context;
 };
 
-export default CartProvider;
+export default {  CartProvider, CartContext ,useCart };
