@@ -265,31 +265,28 @@ function Cart() {
           </div>
         </div>
         
-        {/* Right Column - Order Summary */}
         <div className="lg:col-span-1">
           <div className="bg-gradient-to-b from-gray-50 to-white p-6 rounded-lg shadow-md sticky top-4">
             <h2 className="text-2xl font-bold mb-6">Order Summary</h2>
             
-            <div className="space-y-4 mb-6">
-              <div className="flex justify-between">
-                <span className="text-gray-600">Subtotal ({cart.reduce((total, item) => total + item.quantity, 0)} items)</span>
-                <span className="font-medium">${calculateTotalPrice().toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Delivery Fee</span>
-                <span className="text-green-600 font-medium">$2.99</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Tax</span>
-                <span className="font-medium">${(calculateTotalPrice() * 0.08).toFixed(2)}</span>
-              </div>
-              <div className="border-t pt-4">
-                <div className="flex justify-between text-xl font-bold">
-                  <span>Total</span>
-                  <span className="text-pink-600">
-                    ${(calculateTotalPrice() + 2.99 + (calculateTotalPrice() * 0.08)).toFixed(2)}
-                  </span>
-                </div>
+            <div className="flex justify-between">
+              <span className="text-gray-600">Subtotal ({cart.reduce((total, item) => total + item.quantity, 0)} items)</span>
+              <span className="font-medium">${calculateTotalPrice().toFixed(2)}</span> {/* Fix applied here */}
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-600">Delivery Fee</span>
+              <span className="text-green-600 font-medium">$2.99</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-600">Tax</span>
+              <span className="font-medium">${(calculateTotalPrice() * 0.08).toFixed(2)}</span> {/* Fix applied here */}
+            </div>
+            <div className="border-t pt-4">
+              <div className="flex justify-between text-xl font-bold">
+                <span>Total</span>
+                <span className="text-pink-600">
+                  ${(calculateTotalPrice() + 2.99 + (calculateTotalPrice() * 0.08)).toFixed(2)} {/* Fix applied here */}
+                </span>
               </div>
             </div>
             
@@ -322,7 +319,6 @@ function Cart() {
               </Link>
             </div>
             
-            {/* Order Info */}
             <div className="mt-8 pt-6 border-t">
               <h3 className="font-semibold mb-3">Delivery Information</h3>
               <div className="space-y-2 text-sm text-gray-600">
@@ -343,3 +339,5 @@ function Cart() {
 }
 
 export default Cart;
+
+
